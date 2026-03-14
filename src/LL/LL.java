@@ -45,7 +45,6 @@ public class LL {
        // int count =0;
         Node prev = null;
         Node temp = head;
-
         while(temp!=null)
         {
             if(temp.data ==value)
