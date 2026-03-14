@@ -1,6 +1,14 @@
 package LL;
-
 import java.util.Scanner;
+import LL.ConvertToArr;
+import LL.DisplayArr;
+import LL.RemoveByKOrValue;
+
+import static LL.InsertAtEnd.insertAtEnd;
+import static LL.InsertAtK.InsertAtk;
+import static LL.InsertHead.insertHead;
+import static LL.RemoveByKOrValue.removeByValue;
+import static LL.RemoveByKOrValue.removeKthPosition;
 
 class Node{
     int data;
@@ -12,74 +20,7 @@ class Node{
     }
 }
 
-public class LL {
-
-
-
-    public static Node removeKthPosition(Node head,int k)
-    {
-        if(head == null) return null;
-        if(k==1) return head.next;
-        int count =0;
-        Node prev = null;
-        Node temp = head;
-
-        while(temp!=null)
-        {   count++;
-            if(count ==k)
-            {
-                prev.next = temp.next;
-                break;
-            }
-            prev =temp;
-            temp=temp.next;
-        }
-        return head;
-
-    }
-
-    public static Node removeByValue(Node head,int value)
-    {
-        if(head == null) return null;
-        if(value==1) return head.next;
-       // int count =0;
-        Node prev = null;
-        Node temp = head;
-        while(temp!=null)
-        {
-            if(temp.data ==value)
-            {
-                prev.next = temp.next;
-                break;
-            }
-            prev =temp;
-            temp=temp.next;
-        }
-        return head;
-
-    }
-
-
-
-
-    public static Node convertToLL(int [] arr) {
-        int n = arr.length;
-        Node n1 = new Node(arr[0]);
-        Node head = n1;
-        for (int i = 1; i < n; i++) {
-            Node temp = new Node(arr[i]);
-            n1.next = temp;
-            n1 = temp;
-        }
-        return head;
-    }
-    public static void display(Node head){
-        Node temp = head;
-        while(temp != null){
-            System.out.print( " -> "+ temp.data);
-            temp = temp.next;
-        }
-    }
+public class LL extends ConvertToArr{
 
     public static void main(String[] args)
     {   Scanner sc = new Scanner(System.in);
@@ -88,11 +29,14 @@ public class LL {
         display(head);
         System.out.println();
 
-
-      //  int k = sc.nextInt();
-        int value = sc.nextInt();
-       // head = removeKthPosition(head,k);
-        head = removeByValue(head,value);
+      //  int k = sc.nextInt();// for removeKthPosition
+        //int value = sc.nextInt(); //for  removeByValue
+        //head = removeKthPosition(head,k);
+       // head = removeByValue(head,value);
+        //head = insertHead(head); //for insert Newhead
+        //head = insertAtEnd(head);
+        int value =sc.nextInt();
+        head =InsertAtk(head,1,value);
         display(head);
     }
 }
